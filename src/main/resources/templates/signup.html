@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function findAddr(){
+	new daum.Postcode({
+        oncomplete: function(data) {
+         	// 우편번호
+         	document.getElementById('addr1').value = data.zonecode;
+         	// 주소
+         	document.getElementById("addr2").value = data.address;
+        	// 커서를 상세주소 필드로 이동한다.
+            document.getElementById("addr3").focus();
+        }
+    }).open();
+};
+
+function emailAuth(){
+    d
+};
+</script>
+<body>
+    <form method="post" action="/getUserInfo">
+        <div>Id :
+            <input type="text" name="id" id="id" placeholder="아이디를 입력하세요"><br>
+        </div>
+            <div> PassWord :
+            <input type="password" name="pwd" id="pwd" placeholder="비밀번호를 입력하세요"><br>
+        </div>
+        <div> Email :
+            <input type="email" name="email" id="email" placeholder="이메일을 입력하세요">
+            <button type="button" onclick="emailAuth()"></button><br>
+        </div>
+        <div> Address :
+            <input type="text" name="addr1" id="addr1">
+            <button type="button" onclick="findAddr()">주소 찾기</button><br>
+            <input type="text" name="addr2" id="addr2">
+            <input type="text" name="addr3" id="addr3" placeholder="상세 주소를 입력하세요">
+        </div>
+        <button type="submit">가입하기</button>
+    </form>
+</body>
+</html>
